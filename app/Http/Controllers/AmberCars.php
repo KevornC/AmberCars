@@ -25,7 +25,7 @@ class AmberCars extends Controller
     }
 
     function viewtype(){
-        $brand=Brand::all();
+        $brand=Brand::where('Active','Active')->get();
         return view('amber.types',compact('brand'));
     }
 
@@ -44,7 +44,7 @@ class AmberCars extends Controller
     }
 
     function viewmodel(){
-        $types=VehicleType::with('brands')->get();
+        $types=VehicleType::with('brands')->where('Active','Active')->get();
         return view('amber.models',compact('types'));
     }
 

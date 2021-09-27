@@ -1,6 +1,5 @@
 <nav>
-<a href="/">Home</a><br>
-<a href="/addbrand">Add Brand</a><br>
+<a href="/">Add Brand</a><br>
 <a href="/addtype">Add Vehicle Type</a><br>
 <a href="/addmodel">Add Vehicle Model</a><br>
 <a href="/viewbrands">View Brands</a><br>
