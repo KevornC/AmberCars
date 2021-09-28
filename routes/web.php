@@ -35,3 +35,13 @@ Route::get('/viewbrands','App\Http\Controllers\AmberCars@viewbrands');
 Route::get('/remove/Models/{id?}','App\Http\Controllers\DeleteController@dmodel');
 Route::get('/remove/Types/{id?}','App\Http\Controllers\DeleteController@dtype');
 Route::get('/remove/Brands/{id?}','App\Http\Controllers\DeleteController@dbrand');
+
+//Update
+Route::get('/Update/Models/{id?}','App\Http\Controllers\DeleteController@showmodel');
+Route::post('/update/model','App\Http\Controllers\DeleteController@udmodel');
+
+Route::get('/Update/Types/{id?}','App\Http\Controllers\DeleteController@showtype');
+Route::post('/update/type','App\Http\Controllers\DeleteController@udtype');
+
+Route::get('/Update/Brands/{id?}','App\Http\Controllers\DeleteController@showbrand');
+Route::post('/update/brand','App\Http\Controllers\DeleteController@udbrand');

@@ -221,75 +221,55 @@ select option {
 }
 
     </style>
-<!-- <div style="margin-top:100px">
-<h1>Add Models</h1>
-<form action="/addmodel" method="post">
-    @csrf
-<input type="text" name="model_name" placeholder="Enter Model Name"><br>
-<input type="date" name="year"><br>
-<input type="text" name="color" placeholder="Enter Color"><br>
-<input type="text" name="condition" placeholder="Enter Condition"><br>
-<input type="text" name="milage" placeholder="Enter Milage"><br>
-<input type="text" name="capacity" placeholder="Enter Capacity"><br>
-<select name="driverside">
-    <option value="">Select Driver Side</option>
-    <option value="Left">Left</option>
-    <option value="Right">Right</option>
-</select>
-<select name="trans_type">
-    <option value="">Transmission Type</option>
-    <option value="AutoMatic">Automatic</option>
-    <option value="Manual">Manual</option>
-</select>
-<select name="vehicle_type_id">
-    <option value="">Select Vehicle Type</option>
-    @foreach($types as $info)
-    <option value="{{$info->id}}">{{$info->brands->brand_name." ".$info->vehicle_type_name}}</option>
-    <@endforeach
-</select>
-<input type="submit" value="submit">
-</form>
-</div> -->
 
 
 <div class="container">
-    <h2>Add Model</h2>
-<form action="/addmodel" method="post">
+    <h2>Update Model</h2>
+<form action="/update/model" method="post">
     @csrf
         <div class="row">
             <!-- <h4>Account</h4> -->
-            <div class="input-group input-group-icon"><input type="text" name="model_name" placeholder="Enter Model Name">
+            <input type="hidden" name="id" value="{{$model->id}}">
+            <div class="input-group input-group-icon"><input type="text" name="model_name" value="{{$model->model_name}}">
                 <!-- <div class="input-icon"><i class="fa fa-user"></i></div> -->
             </div>
-            <div class="input-group input-group-icon"><input type="date" name="year" placeholder="Enter Year">
+            <div class="input-group input-group-icon"><input type="date" name="year" value="{{$model->year}}">
                 <!-- <div class="input-icon"><i class="fa fa-envelope"></i></div> -->
             </div>
-            <div class="input-group input-group-icon"><input type="text" name="color" placeholder="Enter Color">
-                <div class="input-icon"><i class="fa fa-key"></i></div>
+            <div class="input-group input-group-icon"><input type="text" name="color" value="{{$model->color}}">
+                <!-- <div class="input-icon"><i class="fa fa-key"></i></div> -->
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <!-- <h4>Date of Birth</h4> -->
                 <div class="input-group">
-                    <div class="col-third"><input type="text" name="condition" placeholder="Enter Condition"></div>
-                    <div class="col-third"><input type="text" name="milage" placeholder="Enter Milage"></div>
-                    <div class="col-third"><input type="text" name="capacity" placeholder="Enter Capacity"></div>
+                    <div class="col-third"><input type="text" name="condition" value="{{$model->condition}}"></div>
+                    <div class="col-third"><input type="text" name="milage" value="{{$model->milage}}"></div>
+                    <div class="col-third"><input type="text" name="capacity" value="{{$model->capacity}}"></div>
                 </div>
             <!-- </div> -->
-                <div class="input-group"><select name="driverside">
-    <option value="">Select Driver Side</option>
+                <div class="input-group">   
+                  
+                <select name="driverside">
+    <option value="{{$model->driverside}}">Old/New Value= {{$model->driverside}}</option>
     <option value="Left">Left</option>
     <option value="Right">Right</option>
-</select><select name="trans_type">
-    <option value="">Transmission Type</option>
+</select>
+
+<select name="trans_type">
+    <option value="{{$model->trans_type}}">Old/New Value= {{$model->trans_type}}</option>
     <option value="Automatic">Automatic</option>
     <option value="Manual">Manual</option>
-</select><div style="margin-left:260px; padding-top:50px"><select name="vehicle_type_id">
-    <option value="">Select Vehicle Type</option>
-    @foreach($types as $info)
+</select>
+
+<div style="margin-left:260px"><select name="vehicle_type_id">
+<option value="{{$model->vehicle_type_id}}">Old/New Value= {{$brand." ".$model->vehicle_type_name}}</option>
+    @foreach($type as $info)
+    @if($info->Active=='Active')
     <option value="{{$info->id}}">{{$info->brands->brand_name." ".$info->vehicle_type_name}}</option>
-    <@endforeach
+    @endif
+    @endforeach
 </select></div></div>
         </div>
 </div>

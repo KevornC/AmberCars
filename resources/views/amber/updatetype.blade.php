@@ -1,5 +1,6 @@
 @extends('layouts.nav')
 
+
 @section('content')
 <style>
     html {
@@ -172,17 +173,35 @@ body {
 
     </style>
 <div class="login-box">
-  <h2>Add Brand</h2>
-  <form action="/" method="post">
+  <h2>Update Type</h2>
+  <form action="/update/type" method="post">
     @csrf
+    <input type="hidden" name="id" value="{{$type->id}}">
     <div class="user-box">
-      <input type="text" name="brand" required="">
-      <label>Brand</label>
+      <input type="text" name="type" value="{{$type->vehicle_type_name}}">
+      <label>Type</label>
     </div>
     <div class="user-box">
-      <input type="text" name="desc" required="">
-      <label>Description</label>
+    <select name="status">
+    <option value="$type->Active">Old/New Value= {{$type->Active}}</option>
+    <option value="Active">Active</option>
+    <option value="Not Active">Not Active</option>
+</select>
     </div>
+    <div style="padding-top:15px;">
+        <div>
+    <div class="user-box">
+    <select name="brand_id">
+    <option value="{{$type->brand_id}}">Old/New value= {{$type->brands->brand_name}}</option>
+    @foreach($brands as $info)
+    @if($info->Active=='Active')
+    <option value="{{$info->id}}">{{$info->brand_name}}</option>
+    @endif
+    @endforeach
+</select>
+    </div>
+    <div style="padding-top:10px;">
+        <div>
     <button type="submit">
       <span></span>
       <span></span>
@@ -194,4 +213,3 @@ body {
 </div>
 
 @endsection
-

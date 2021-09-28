@@ -172,15 +172,23 @@ body {
 
     </style>
 <div class="login-box">
-  <h2>Add Brand</h2>
-  <form action="/" method="post">
+  <h2>Update Brand</h2>
+  <form action="/update/brand" method="post">
     @csrf
+    <input type="hidden" name="id" value="{{$brand->id}}">
     <div class="user-box">
-      <input type="text" name="brand" required="">
+      <input type="text" name="brand" value="{{$brand->brand_name}}">
       <label>Brand</label>
     </div>
     <div class="user-box">
-      <input type="text" name="desc" required="">
+    <select name="status">
+    <option value="$brand->Active">Old/New Value= {{$brand->Active}}</option>
+    <option value="Active">Active</option>
+    <option value="Not Active">Not Active</option>
+</select>
+    </div>
+    <div class="user-box">
+      <input type="text" name="desc" value="{{$brand->desc}}">
       <label>Description</label>
     </div>
     <button type="submit">

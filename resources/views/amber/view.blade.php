@@ -2,7 +2,7 @@
 
 @section('content')
 <div style="margin-top:100px">
-<h1>View Data</h1>
+<h1>View Model</h1>
 <table border="5" cellspacing="0" cellpadding="1">
     <thead>
         <tr>
@@ -30,7 +30,7 @@
             <td>{{$info->driverside}}</td>
             <td>{{$info->trans_type}}</td>
             <td>{{$info->vehicletypes->vehicle_type_name}}</td>
-            <td><a href="{{url('/remove/Models/'.$info->id)}}">Remove</a></td>
+            <td><a href="{{url('/remove/Models/'.$info->id)}}">Remove</a><a href="{{url('/Update/Models/'.$info->id)}}">Update</a></td>
         </tr>
         @endforeach
     </tbody>
